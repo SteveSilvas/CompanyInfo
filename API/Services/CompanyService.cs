@@ -13,6 +13,8 @@ namespace CompanyInfo.Services
         }
         public async Task<CompanyInfoDTO> GetCompanyInfoAsync(string cnpj)
         {
+            if (CNPJValidator.IsValid(cnpj))
+                throw new Exception("CNPJ inválido.");
             return await _getCompanyInfo.GetAsync(cnpj);
         }
     }

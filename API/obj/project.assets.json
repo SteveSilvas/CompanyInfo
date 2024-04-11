@@ -825,11 +825,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\stdsilva\\Documents\\_estudos\\cSharp\\CompanyInfo\\CompanyInfo.csproj",
+      "projectUniqueName": "C:\\Users\\stdsilva\\Documents\\_estudos\\cSharp\\CompanyInfo\\API\\CompanyInfo.csproj",
       "projectName": "CompanyInfo",
-      "projectPath": "C:\\Users\\stdsilva\\Documents\\_estudos\\cSharp\\CompanyInfo\\CompanyInfo.csproj",
+      "projectPath": "C:\\Users\\stdsilva\\Documents\\_estudos\\cSharp\\CompanyInfo\\API\\CompanyInfo.csproj",
       "packagesPath": "C:\\Users\\stdsilva\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\stdsilva\\Documents\\_estudos\\cSharp\\CompanyInfo\\obj\\",
+      "outputPath": "C:\\Users\\stdsilva\\Documents\\_estudos\\cSharp\\CompanyInfo\\API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

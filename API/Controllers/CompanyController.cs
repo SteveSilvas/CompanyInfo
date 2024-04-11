@@ -11,20 +11,27 @@ namespace CompanyInfo.Controllers
 
         public CompanyController(ICompanyService companyService)
         {
-            _companyService = companyService; 
+            _companyService = companyService;
         }
 
         [HttpGet]
         public async Task<ActionResult<CompanyInfoDTO>> GetByCnpj(string cnpj)
         {
-            CompanyInfoDTO companyInfo = await _companyService.GetCompanyInfoAsync(cnpj);
-
-            if (companyInfo == null)
+            try
             {
-                return NotFound("Empresa não encontrada.");
-            }
+                CompanyInfoDTO companyInfo = await _companyService.GetCompanyInfoAsync(cnpj);
 
-            return Ok(companyInfo);
+                if (companyInfo == null)
+                {
+                    return NotFound("Empresa não encontrada.");
+                }
+
+                return Ok(companyInfo);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

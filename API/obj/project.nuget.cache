@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qkBi6gpqs6AP647hb1j+w5cpm0ZZHP0g0JNrLSwcycaYDXrjrLLGBI0PO2T7IS/S18kcNERLJpdKULLY5JovZw==",
+  "dgSpecHash": "ytKPvRrp7nV1SvrFkU9kCEjiJGBXgWtJfQcK5FK+v3Ec3j3rPBLGKOYCth87VbE4KU/B4g5NApmFLrZvEcy0mQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\stdsilva\\Documents\\_estudos\\cSharp\\CompanyInfo\\CompanyInfo.csproj",
+  "projectFilePath": "C:\\Users\\stdsilva\\Documents\\_estudos\\cSharp\\CompanyInfo\\API\\CompanyInfo.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\stdsilva\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.1\\microsoft.entityframeworkcore.7.0.1.nupkg.sha512",
     "C:\\Users\\stdsilva\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.1\\microsoft.entityframeworkcore.abstractions.7.0.1.nupkg.sha512",
