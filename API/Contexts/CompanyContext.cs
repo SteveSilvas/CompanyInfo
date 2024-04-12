@@ -11,17 +11,18 @@ namespace CompanyInfo.Contexts
         public CompanyContext(DbContextOptions<CompanyContext> options) : base(options)
         {
         }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlite("DataSource=C:\\Users\\Ferreiras\\OneDrive\\Documentos\\_steve_working\\CompanyInfo\\API\\bin\\Debug\\net6.0\\sqlitedb1", option =>
-            {
-                option.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName);
-            });
-            base.OnConfiguring(optionsBuilder);
-        }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseMySQL("DataSource=C:\\Users\\Ferreiras\\OneDrive\\Documentos\\_steve_working\\CompanyInfo\\API\\bin\\Debug\\net6.0\\sqlitedb1", option =>
+        //    {
+        //        option.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName);
+        //    });
+        //    base.OnConfiguring(optionsBuilder);
+        //}
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new EmpresaConfiguration());
+            //modelBuilder.ApplyConfiguration(new EmpresaConfiguration());
+            modelBuilder.ApplyConfiguration(new AtividadeConfiguration());
             base.OnModelCreating(modelBuilder);
         }
     }

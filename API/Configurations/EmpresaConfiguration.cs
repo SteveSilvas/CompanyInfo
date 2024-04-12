@@ -1,4 +1,5 @@
 ﻿using CompanyInfo.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace CompanyInfo.Configurations
@@ -33,19 +34,19 @@ namespace CompanyInfo.Configurations
             builder.Property(a => a.Status)
                 .HasColumnName("Status");
 
-            builder.Property(a => a.AtividadePrincipal)
-                .HasColumnName("AtividadePrincipal");
+            //builder.Property(a => a.AtividadePrincipal)
+            //    .HasColumnName("AtividadePrincipal");
 
-            builder.Property(a => a.AtividadesSecundarias)
-                .HasColumnName("AtividadesSecundarias")
-                .IsRequired();
+            //builder.Property(a => a.AtividadesSecundarias)
+            //    .HasColumnName("AtividadesSecundarias")
+            //    .IsRequired();
 
             builder.Property(a => a.CapitalSocial)
                 .HasColumnName("CapitalSocial");
 
-            builder.HasOne(a => a.Billing)
-                .WithMany()
-                .HasForeignKey(a => a.BillingId);
+            //builder.HasOne(a => a.Billing)
+            //    .WithMany()
+            //    .HasForeignKey(a => a.BillingId);
 
             //builder.HasOne(a => a.Id)
             //    .WithMany()

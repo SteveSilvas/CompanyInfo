@@ -6,5 +6,7 @@ namespace CompanyInfo.Interfaces
     public interface ICompanyService
     {
         public Task<CompanyInfoDTO> GetCompanyInfoAsync(string cnpj);
+        
+        public Task<List<CompanyInfoDTO>> GetAllAsync();
     }
 }

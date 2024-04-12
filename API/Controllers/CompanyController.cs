@@ -8,10 +8,11 @@ namespace CompanyInfo.Controllers
     public class CompanyController : ControllerBase
     {
         private ICompanyService _companyService;
-
-        public CompanyController(ICompanyService companyService)
+        private IAtividadeRepository _atividadeRepository;
+        public CompanyController(ICompanyService companyService, IAtividadeRepository atividadeRepository)
         {
             _companyService = companyService;
+            _atividadeRepository = atividadeRepository;
         }
 
         [HttpGet]
@@ -53,5 +54,6 @@ namespace CompanyInfo.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
     }
 }
