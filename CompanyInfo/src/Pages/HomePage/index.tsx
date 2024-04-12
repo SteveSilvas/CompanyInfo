@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import { IoIosAddCircle } from "react-icons/io";
 import { CnpjType, CompanyInfo } from "../../@types/types";
 import api from "../../Services/Api";
-
 const Homepage: React.FC = () => {
     const [companiesSearcheds, setCompaniesSearcheds] = useState<CompanyInfo[]>([]);
     const [cnpjs, setCnpjs] = useState<CnpjType[]>([{ cnpj: "", key: 0 }]);
@@ -51,22 +51,20 @@ const Homepage: React.FC = () => {
         console.warn(cnpjsLocal)
     }
     return (
-        <div className='Homepage' style={{ display: "flex", flexDirection: "row", width: "100%", justifyContent: "center", alignItems: "start" }}>
-            <section style={{ display: "flex", flexDirection: "column", width: "30%" }}>
+        <div className='Homepage' style={{ display: "flex", flexDirection: "row", width: "100%", justifyContent: "start", alignItems: "start"}}>
+            <section style={{  position: "relative",display: "flex", flexDirection: "column", width: "30%", padding: "1rem", borderRadius: "10px", border: "1px solid #c3c3c3"  }}>
                 Buscar Empresa por CNPJ
-                <div style={{position: "relative", display: "flex", flexDirection: "column", gap: "20px", padding: "10px", margin: '0px', borderRadius: "10px", border: "1px solid #c3c3c3"}}>
-                    <button
+                    <IoIosAddCircle
                         onClick={handleAddCnpj}
-                        style={{ cursor: "pointer", backgroundColor:"greenyellow" }}
-                    >
-                        +
-                    </button>
-                    {renderInputs()}
+                        style={{ cursor: "pointer", color: "greenyellow", position: "absolute", right: "10px", top: "10px", height: "30px", width: "30px" }} />
+                    
+                <div style={{ display: "flex", flexDirection: "column", gap: "20px", marginTop: "20px", margin: '0px', borderRadius: "10px", border: "1px solid #c3c3c3" }}>
+                {renderInputs()}
 
                 </div>
                 <button
                     onClick={handleSearchCompanies}
-                    style={{ cursor: "pointer", backgroundColor:"green", color:"white" }}
+                    style={{ cursor: "pointer", backgroundColor: "green", color: "white" }}
                 >
                     Search
                 </button>
@@ -85,7 +83,6 @@ const Homepage: React.FC = () => {
                             <div>Motivo Situação: {company.motivoSituacao}</div>
                             <div>Situação Especial: {company.situacaoEspecial}</div>
                             <div>Data Situação Especial: {company.dataSituacaoEspecial}</div>
-                            <div>Capital Social: {company.capitalSocial}</div>
                             <div>Porte: {company.porte}</div>
                             <div>Abertura: {company.abertura}</div>
                             <div>Situação: {company.situacao}</div>
@@ -95,6 +92,7 @@ const Homepage: React.FC = () => {
                         </div>
 
                         <div style={{ display: "flex", flexDirection: "column", gap: "20px", backgroundColor: "#c3c3c3", padding: "10px", margin: '0px' }}>
+                            <div>Capital Social: {company.capitalSocial}</div>
                             <div>Logradouro: {company.logradouro}</div>
                             <div>Número: {company.numero}</div>
                             <div>Complemento: {company.complemento}</div>
@@ -104,12 +102,9 @@ const Homepage: React.FC = () => {
                             <div>CEP: {company.cep}</div>
                             <div>Telefone: {company.telefone}</div>
                             <div>Última Atualização: {company.ultimaAtualizacao}</div>
-
                             <div>Email: {company.email}</div>
                             <div>EFR: {company.efr}</div>
-
                             <div>Billing: {JSON.stringify(company.billing)}</div>
-
                         </div>
                     </div>
                 ))}
