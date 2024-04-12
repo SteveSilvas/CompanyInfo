@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace CompanyInfo.Configurations
 {
-    public class EmpresaConfiguration
+    public class EmpresaConfiguration : IEntityTypeConfiguration<Empresa>
     {
         public void Configure(EntityTypeBuilder<Empresa> builder)
         {

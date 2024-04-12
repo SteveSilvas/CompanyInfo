@@ -4,6 +4,7 @@
     {
         static public bool IsValid(string cnpj)
         {
+            if (string.IsNullOrEmpty(cnpj)) return false;
             if (cnpj == "00000000000000" || cnpj == "11111111111111" ||
                 cnpj == "22222222222222" || cnpj == "33333333333333" ||
                 cnpj == "44444444444444" || cnpj == "55555555555555" ||

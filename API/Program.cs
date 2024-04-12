@@ -21,7 +21,12 @@ namespace Ecomerce.Context
             }
 
             app.UseHttpsRedirection();
-
+            app.UseCors(policy =>
+            {
+                policy.AllowAnyOrigin() // Substitua pelo endereço do seu aplicativo React
+                      .AllowAnyMethod()
+                      .AllowAnyHeader();
+            });
             app.UseAuthorization();
 
             app.MapControllers();

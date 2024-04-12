@@ -34,10 +34,5 @@ namespace CompanyInfo.DTOs
         public List<QsaDTO> QSA { get; set; }
         public Dictionary<string, string> Extra { get; set; }
         public BillingDTO Billing { get; set; }
-    }
- 
-
- 
-
-   
+    }   
 }

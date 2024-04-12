@@ -1,6 +1,8 @@
 ﻿using CompanyInfo.Contexts;
 using CompanyInfo.DTOs;
 using CompanyInfo.Interfaces;
+using CompanyInfo.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace CompanyInfo.Repositories
@@ -15,7 +17,7 @@ namespace CompanyInfo.Repositories
 
         public async Task<List<CompanyInfoDTO>> GetAllAsync()
         {
-            var companiesOfDB = await _companyContext.Companies.ToListAsync();
+            var companiesOfDB = await _companyContext.Empresas.ToListAsync();
             List<CompanyInfoDTO> result = new List<CompanyInfoDTO>();
           
 
@@ -31,5 +33,42 @@ namespace CompanyInfo.Repositories
             return result;
         }
 
+        public async Task Create(CompanyInfoDTO companyInfoDTO)
+        {
+            Empresa company = new Empresa
+            {
+                Abertura = companyInfoDTO.Abertura,
+                Situacao = companyInfoDTO.Situacao,
+                Tipo = companyInfoDTO.Tipo,
+                Nome = companyInfoDTO.Nome,
+                Fantasia = companyInfoDTO.Fantasia,
+                Porte = companyInfoDTO.Porte,
+                NaturezaJuridica = companyInfoDTO.NaturezaJuridica,
+                Logradouro = companyInfoDTO.Logradouro,
+                Numero = companyInfoDTO.Numero,
+                Complemento = companyInfoDTO.Complemento,
+                Municipio = companyInfoDTO.Municipio,
+                Bairro = companyInfoDTO.Bairro,
+                UF = companyInfoDTO.UF,
+                CEP = companyInfoDTO.CEP,
+                Telefone = companyInfoDTO.Telefone,
+                DataSituacao = companyInfoDTO.DataSituacao,
+                CNPJ = companyInfoDTO.CNPJ,
+                UltimaAtualizacao = companyInfoDTO.UltimaAtualizacao,
+                Status = companyInfoDTO.Status,
+                Email = companyInfoDTO.Email,
+                EFR = companyInfoDTO.EFR,
+                MotivoSituacao = companyInfoDTO.MotivoSituacao,
+                SituacaoEspecial = companyInfoDTO.SituacaoEspecial,
+                DataSituacaoEspecial = companyInfoDTO.DataSituacaoEspecial,
+                CapitalSocial = companyInfoDTO.CapitalSocial
+            };
+
+
+            _companyContext.Empresas.Add(company);
+
+            await _companyContext.SaveChangesAsync();
+            //return Task.FromResult("Processo executado com sucesso.");
+        }
     }
 }

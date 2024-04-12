@@ -55,5 +55,19 @@ namespace CompanyInfo.Controllers
             }
         }
 
+
+        [HttpPost] 
+        public async Task<IActionResult> Create(CompanyInfoDTO company)
+        {
+            try
+            {
+                await _companyService.Create(company);
+
+                return Ok(company);
+            } catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }
