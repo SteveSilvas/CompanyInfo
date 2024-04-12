@@ -7,15 +7,22 @@ namespace CompanyInfo.Services
     public class CompanyService : ICompanyService
     {
         private readonly IGetCompanyInfo _getCompanyInfo;
-        public CompanyService() {
-            //_getCompanyInfo = getCompanyInfo;
-            _getCompanyInfo = new GetCompanyWithCnpjWS();
+        private readonly ICompanyRepository _companyRepository;
+        public CompanyService(ICompanyRepository companyRepository, IGetCompanyInfo getCompanyInfo)
+        {
+            _getCompanyInfo = getCompanyInfo;
+            _companyRepository = companyRepository;
         }
         public async Task<CompanyInfoDTO> GetCompanyInfoAsync(string cnpj)
         {
             if (CNPJValidator.IsValid(cnpj))
                 throw new Exception("CNPJ inválido.");
             return await _getCompanyInfo.GetAsync(cnpj);
+        }
+
+        public async Task<List<CompanyInfoDTO>> GetAllAsync()
+        {
+            return await _companyRepository.GetAllAsync();
         }
     }
 }

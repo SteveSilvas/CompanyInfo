@@ -4,11 +4,11 @@ using Newtonsoft.Json;
 
 namespace CompanyInfo.Functions
 {
-    public class GetCompanyWithCnpjWS : IGetCompanyInfo
+    public class GetCompanyByCnpj : IGetCompanyInfo
     {
         private readonly HttpClient _httpClient;
 
-        public GetCompanyWithCnpjWS()
+        public GetCompanyByCnpj()
         {
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = new Uri("https://receitaws.com.br/v1/cnpj/");

@@ -1,5 +1,7 @@
-﻿using CompanyInfo.Functions;
+﻿using CompanyInfo.Contexts;
+using CompanyInfo.Functions;
 using CompanyInfo.Interfaces;
+using CompanyInfo.Repositories;
 using CompanyInfo.Services;
 using Microsoft.OpenApi.Models;
 
@@ -9,10 +11,10 @@ namespace CompanyInfo.Configurations
     {
         public static void Start(WebApplicationBuilder builder)
         {
-            //ConfigureDatabase(builder);
-            //ConfigureRepositories(builder.Services);
+            ConfigureDatabase(builder);
+            ConfigureRepositories(builder.Services);
             ConfigureControllers(builder.Services);
-            //ConfigureFunctions(builder.Services);
+            ConfigureFunctions(builder.Services);
             ConfigureServices(builder.Services);
             ConfigureSwagger(builder.Services);
         }
@@ -21,27 +23,25 @@ namespace CompanyInfo.Configurations
             services.AddControllers();
             services.AddEndpointsApiExplorer();
         }
-        //private static void ConfigureDatabase(WebApplicationBuilder builder)
-        //{
-        //    builder.Services.AddDbContext<DBContext>(options =>
-        //        options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
-        //            ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))));
-        //}
+        private static void ConfigureDatabase(WebApplicationBuilder builder)
+        {
+            //builder.Services.AddDbContext<CompanyContext>(options =>
+            //    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-        //private static void ConfigureRepositories(IServiceCollection services)
-        //{
-        //    services.AddScoped<IAddressRepository, AddressRepository>();
-        //}
-        //private static void ConfigureFunctions(IServiceCollection services)
-        //{
-        //    services.AddScoped<IGetCompanyInfo, GetCompanyWithCnpjWS>;
-        //}
+        }
+
+        private static void ConfigureRepositories(IServiceCollection services)
+        {
+            services.AddScoped<ICompanyRepository, CompanyRepository>();
+        }
+        private static void ConfigureFunctions(IServiceCollection services)
+        {
+            services.AddScoped<IGetCompanyInfo, GetCompanyByCnpj>();
+        }
         private static void ConfigureServices(IServiceCollection services)
         {
             ConfigureScopedServices(services);
         }
-
-
 
         private static void ConfigureScopedServices(IServiceCollection services)
         {

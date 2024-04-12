@@ -33,5 +33,25 @@ namespace CompanyInfo.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpGet]
+        public async Task<ActionResult<List<CompanyInfoDTO>>> GetAll()
+        {
+            try
+            {
+                List<CompanyInfoDTO> companyInfo = await _companyService.GetAllAsync();
+
+                if (companyInfo.Count == 0)
+                {
+                    return NotFound("Empresas não encontradas.");
+                }
+
+                return Ok(companyInfo);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }
