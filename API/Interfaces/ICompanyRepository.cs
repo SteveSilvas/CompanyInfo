@@ -1,6 +1,5 @@
 ﻿using CompanyInfo.DTOs;
 using CompanyInfo.Models;
-using Microsoft.AspNetCore.Mvc;
 
 namespace CompanyInfo.Interfaces
 {
@@ -8,6 +7,8 @@ namespace CompanyInfo.Interfaces
     {
         public Task<List<CompanyInfoDTO>> GetAllAsync();
 
-        public Task Create(Empresa company);
+        public Task<int> Create(Empresa company);
+
+        public Empresa? GetByCNPJ(string cnpj);
     }
 }

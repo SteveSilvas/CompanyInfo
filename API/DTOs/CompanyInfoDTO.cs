@@ -12,8 +12,8 @@ namespace CompanyInfo.DTOs
         public string Fantasia { get; set; } = string.Empty;
         public string Porte { get; set; } = string.Empty;
         public string NaturezaJuridica { get; set; } = string.Empty;
-        public List<AtividadeDTO> AtividadePrincipal { get; set; }
-        public List<AtividadeDTO> AtividadesSecundarias { get; set; }
+        public List<AtividadeDTO>? AtividadePrincipal { get; set; }
+        public List<AtividadeDTO>? AtividadesSecundarias { get; set; }
         public string Logradouro { get; set; } = string.Empty;
         public string Numero { get; set; } = string.Empty;
         public string Complemento { get; set; } = string.Empty;

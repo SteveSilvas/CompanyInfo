@@ -61,12 +61,19 @@ namespace CompanyInfo.Repositories
             return result;
         }
 
-        public async Task Create(Empresa company)
+        public Empresa? GetByCNPJ(string cnpj)
+        {
+            return  _companyContext
+                .Empresas
+                .Where(c => c.CNPJ == cnpj)
+                .FirstOrDefault();
+        }
+        public async Task<int> Create(Empresa company)
         {
             _companyContext.Empresas.Add(company);
 
             await _companyContext.SaveChangesAsync();
-            //return Task.FromResult("Processo executado com sucesso.");
+            return company.Id;
         }
     }
 }

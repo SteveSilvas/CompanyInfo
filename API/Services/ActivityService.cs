@@ -7,8 +7,8 @@ namespace CompanyInfo.Services
 {
     public class ActivityService : IActivityService
     {
-        private readonly IAtividadeRepository _activityRepository;
-        public ActivityService(IAtividadeRepository activityRepository)
+        private readonly IActivityRepository _activityRepository;
+        public ActivityService(IActivityRepository activityRepository)
         {
             _activityRepository = activityRepository;
         }

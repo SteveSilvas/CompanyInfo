@@ -9,8 +9,8 @@ namespace CompanyInfo.Controllers
     public class CompanyController : ControllerBase
     {
         private ICompanyService _companyService;
-        private IAtividadeRepository _atividadeRepository;
-        public CompanyController(ICompanyService companyService, IAtividadeRepository atividadeRepository)
+        private IActivityRepository _atividadeRepository;
+        public CompanyController(ICompanyService companyService, IActivityRepository atividadeRepository)
         {
             _companyService = companyService;
             _atividadeRepository = atividadeRepository;
@@ -55,7 +55,6 @@ namespace CompanyInfo.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
 
         [HttpPost] 
         public async Task<IActionResult> Create(CompanyInfoDTO company)

@@ -42,16 +42,48 @@ CREATE TABLE Empresa (
     MotivoSituacao VARCHAR(255) NOT NULL,
     SituacaoEspecial VARCHAR(255) NOT NULL,
     DataSituacaoEspecial VARCHAR(255) NOT NULL,
-    CapitalSocial VARCHAR(255) NOT NULL
+    CapitalSocial VARCHAR(255) NOT NULL,
+    BillingFree INT NULL,
+    BillingDatabase INT NULL
 );
 
+DESCRIBE Empresa;
+SELECT * FROM Empresa;
 
-INSERT INTO Empresa (Abertura, Situacao, Tipo, Nome, Fantasia, Porte, NaturezaJuridica, Logradouro, Numero, Complemento, Municipio, Bairro, UF, CEP, Telefone, DataSituacao, CNPJ, UltimaAtualizacao, Status, Email, EFR, MotivoSituacao, SituacaoEspecial, DataSituacaoEspecial, CapitalSocial)
-VALUES ('01/01/2000', 'Ativa', 'Matriz', 'Empresa A LTDA', 'Empresa A', 'Grande', 'Sociedade Limitada', 'Rua Principal', '123', 'Sala 1', 'Cidade A', 'Centro', 'SP', '12345-678', '(11) 1234-5678', '01/01/2022', '00.000.000/0001-00', '2023-04-11 12:34:56', 'OK', 'empresaA@example.com', 'Responsável A', 'Motivo A', '', '', '');
+CREATE TABLE AtividadeXEmpresa
+(
+    Id INT PRIMARY KEY AUTO_INCREMENT,
+    IdEmpresa INT NOT NULL,
+    IdAtividade INT NOT NULL,
+    Tipo INT NOT NULL,
+    CONSTRAINT FK_AtividadeXEmpresa_Empresa FOREIGN KEY (IdEmpresa) REFERENCES Empresa(Id),
+    CONSTRAINT FK_AtividadeXEmpresa_Atividade FOREIGN KEY (IdAtividade) REFERENCES Atividade(Id)
+);
 
-INSERT INTO Empresa (Abertura, Situacao, Tipo, Nome, Fantasia, Porte, NaturezaJuridica, Logradouro, Numero, Complemento, Municipio, Bairro, UF, CEP, Telefone, DataSituacao, CNPJ, UltimaAtualizacao, Status, Email, EFR, MotivoSituacao, SituacaoEspecial, DataSituacaoEspecial, CapitalSocial)
-VALUES ('05/05/2010', 'Ativa', 'Filial', 'Empresa B Filial LTDA', 'Filial B', 'Média', 'Sociedade Limitada', 'Av. Secundária', '456', '', 'Cidade B', 'Centro', 'RJ', '54321-098', '(21) 9876-5432', '02/02/2022', '11.111.111/0001-11', '2023-04-11 10:20:30', 'OK', 'filialB@example.com', 'Responsável B', 'Motivo B', '', '', '1000000.00');
+DESCRIBE AtividadeXEmpresa;
 
-INSERT INTO Empresa (Abertura, Situacao, Tipo, Nome, Fantasia, Porte, NaturezaJuridica, Logradouro, Numero, Complemento, Municipio, Bairro, UF, CEP, Telefone, DataSituacao, CNPJ, UltimaAtualizacao, Status, Email, EFR, MotivoSituacao, SituacaoEspecial, DataSituacaoEspecial, CapitalSocial)
-VALUES ('10/10/2015', 'Ativa', 'Matriz', 'Empresa C S/A', 'Empresa C', 'Pequena', 'Sociedade Anônima', 'Rua Comercial', '789', '', 'Cidade C', 'Periferia', 'MG', '98765-432', '(31) 1234-5678', '03/03/2022', '22.222.222/0001-22', '2023-04-11 08:00:00', 'OK', 'empresaC@example.com', 'Responsável C', 'Motivo C', '', '', '500000.00');
+CREATE TABLE Qsa (
+    Id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    Nome VARCHAR(255) NOT NULL,
+    IdEmpresa INT NOT NULL,
+    FOREIGN KEY (IdEmpresa) REFERENCES Empresa(Id)
+);
+
+SELECT * FROM Empresa EM
+LEFT JOIN AtividadeXEmpresa EA
+ON EA.IdEmpresa = EM.Id
+LEFT JOIN Atividade ATI
+ON ATI.Id = EA.IdAtividade
+INNER JOIN Qsa QSA
+ON QSA.IdEmpresa = EM.Id;
+
+DELETE FROM AtividadeXEmpresa; 
+DELETE FROM Atividade;
+DELETE FROM Qsa;
+DELETE FROM Empresa;
+
+DROP TABLE AtividadeXEmpresa;
+DROP TABLE Atividade;
+DROP TABLE Qsa;
+DROP TABLE Empresa;
 
