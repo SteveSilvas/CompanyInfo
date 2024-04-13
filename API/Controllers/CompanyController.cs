@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CompanyInfo.Controllers
 {
+    [ApiController]
     [Route("[controller]/[action]")]
     public class CompanyController : ControllerBase
     {
@@ -63,7 +64,7 @@ namespace CompanyInfo.Controllers
             {
                 await _companyService.Create(company);
 
-                return Ok(company);
+                return Ok("Empresa cadastrada com sucesso.");
             } catch (Exception ex)
             {
                 return BadRequest(ex.Message);

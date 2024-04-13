@@ -4,6 +4,7 @@ namespace CompanyInfo.DTOs
 {
     public class CompanyInfoDTO 
     {
+        public int? Id { get; set; }
         public string Abertura { get; set; } = string.Empty;
         public string Situacao { get; set; } = string.Empty;
         public string Tipo { get; set; } = string.Empty;
