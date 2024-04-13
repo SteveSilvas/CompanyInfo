@@ -38,18 +38,25 @@ const Homepage: React.FC = () => {
                 setCompaniesSearcheds(companies);
             })
             .catch((error) => {
-                console.error(error);
+                alert(error);
             });
     }
 
     const handleAddCnpj = () => {
-        console.warn("first")
         const cnpjsLocal = [...cnpjs];
         cnpjsLocal.push({ cnpj: "", key: cnpjsLocal.length });
         setCnpjs(cnpjsLocal);
-
-        console.warn(cnpjsLocal)
     }
+    const handleSaveCompany = (company: CompanyInfo) => {
+        api.post(`Company/Create`, company)
+            .then((response) => {
+                alert("Empresa Salva com sucesso.");
+            })
+            .catch((error) => {
+                alert("Erro ao salvar Empresa - " + error);
+            });
+    }
+    
     return (
         <div className='Homepage' style={{ display: "flex", flexDirection: "row", width: "100%", justifyContent: "start", alignItems: "start"}}>
             <section style={{  position: "relative",display: "flex", flexDirection: "column", width: "30%", padding: "1rem", borderRadius: "10px", border: "1px solid #c3c3c3"  }}>
@@ -105,6 +112,9 @@ const Homepage: React.FC = () => {
                             <div>Email: {company.email}</div>
                             <div>EFR: {company.efr}</div>
                             <div>Billing: {JSON.stringify(company.billing)}</div>
+                        </div>
+                        <div>
+                            <button onClick={handleSaveCompany(company)}>Salvar</button>    
                         </div>
                     </div>
                 ))}
