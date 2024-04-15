@@ -140,6 +140,11 @@ namespace CompanyInfo.Configurations
                 .HasColumnName("CapitalSocial")
                 .HasColumnType("varchar(255)")
                 .IsRequired();
+
+            builder.HasMany(e => e.AtividadesXEmpresas)
+            .WithOne(ae => ae.Empresa)
+            .HasForeignKey(ae => ae.IdEmpresa);
+
         }
     }
 }

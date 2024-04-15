@@ -30,7 +30,9 @@ namespace CompanyInfo.Configurations
         private static void ConfigureRepositories(IServiceCollection services)
         {
             services.AddScoped<ICompanyRepository, CompanyRepository>();
-            services.AddScoped<IAtividadeRepository, AtividadeRepository>();
+            services.AddScoped<IActivityRepository, ActivityRepository>();
+            services.AddScoped<IActivityXCompanyRepository, ActivityXCompanyRepository>();
+            services.AddScoped<IQsaRepository, QsaRepository>();
         }
 
         private static void ConfigureServices(IServiceCollection services)

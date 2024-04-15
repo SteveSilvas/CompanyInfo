@@ -15,8 +15,8 @@ namespace CompanyInfo.Models
         public string Fantasia { get; set; } = string.Empty;
         public string Porte { get; set; } = string.Empty;
         public string NaturezaJuridica { get; set; } = string.Empty;
-        //public List<Atividade> AtividadePrincipal { get; set; }
-        //public List<Atividade> AtividadesSecundarias { get; set; }
+
+        public List<AtividadeXEmpresa>? AtividadesXEmpresas { get; set; }
         public string Logradouro { get; set; } = string.Empty;
         public string Numero { get; set; } = string.Empty;
         public string Complemento { get; set; } = string.Empty;
@@ -35,9 +35,11 @@ namespace CompanyInfo.Models
         public string SituacaoEspecial { get; set; } = string.Empty;
         public string DataSituacaoEspecial { get; set; } = string.Empty;
         public string CapitalSocial { get; set; } = string.Empty;
-        //public List<Qsa> QSA { get; set; }
+        public List<Qsa>? Qsas { get; set; }
         //public Dictionary<string, string> Extra { get; set; }
         //public int BillingId { get; set; }
-        //public virtual Billing Billing { get; set; }
+        //public virtual Billing? Billing { get; set; }
+        public bool BillingFree { get; set; }
+        public bool BillingDatabase{ get; set; }
     }
 }

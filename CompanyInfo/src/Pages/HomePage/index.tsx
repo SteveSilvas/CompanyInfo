@@ -67,13 +67,20 @@ const Homepage: React.FC = () => {
     }
 
     const handleAddCnpj = () => {
-        console.warn("first")
         const cnpjsLocal = [...cnpjs];
         cnpjsLocal.push({ cnpj: "", key: cnpjsLocal.length });
         setCnpjs(cnpjsLocal);
-
-        console.warn(cnpjsLocal)
     }
+    const handleSaveCompany = (company: CompanyInfo) => {
+        api.post(`Company/Create`, company)
+            .then((response) => {
+                alert("Empresa Salva com sucesso.");
+            })
+            .catch((error) => {
+                alert("Erro ao salvar Empresa - " + error);
+            });
+    }
+    
     return (
         <div className='HomePage'>
             <section className="SearchArea">
@@ -209,6 +216,9 @@ const Homepage: React.FC = () => {
                                 <span className="CompanyInfoTitle">Billing: </span>
                                 <span className="CompanyInfoValue">{JSON.stringify(company.billing)}</span>
                             </div>
+                        </div>
+                        <div>
+                            <button onClick={handleSaveCompany(company)}>Salvar</button>    
                         </div>
                     </div>
                 ))}

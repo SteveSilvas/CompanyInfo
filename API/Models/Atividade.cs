@@ -10,5 +10,6 @@ namespace CompanyInfo.Models
         public int Id { get; set; }
         public string Code { get; set; } = string.Empty;
         public string Text { get; set; } = string.Empty;
+        public List<AtividadeXEmpresa>? AtividadesXEmpresas { get; set; }
     }
 }

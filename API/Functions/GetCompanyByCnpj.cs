@@ -19,6 +19,7 @@ namespace CompanyInfo.Functions
         {
             try
             {
+                cnpj = Helpers.CleanCNPJ(cnpj);
                 HttpResponseMessage response = await _httpClient.GetAsync(cnpj);
 
                 response.EnsureSuccessStatusCode();
@@ -26,7 +27,7 @@ namespace CompanyInfo.Functions
                 string jsonContent = await response.Content.ReadAsStringAsync();
 
                 CompanyInfoDTO? companyInfo = JsonConvert.DeserializeObject<CompanyInfoDTO>(jsonContent);
-
+                
                 if (companyInfo == null)
                     throw new Exception("Erro ao obter informações da empresa. Verifique o CNPJ e tente novamente.");
 

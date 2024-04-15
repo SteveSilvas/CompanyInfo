@@ -23,6 +23,11 @@ namespace CompanyInfo.Configurations
             builder.Property(a => a.Text)
                 .HasColumnName("Text")
                 .IsRequired();
+
+            builder.HasMany(a => a.AtividadesXEmpresas)
+                .WithOne(ae => ae.Atividade)
+                .HasForeignKey(ae => ae.IdAtividade);
+
         }
     }
 }

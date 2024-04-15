@@ -1,0 +1,106 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "CompanyInfo",
+    "dateExported": "2024-04-13T14:42:12.645Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "405a1043-cbad-4074-a2f7-a65e44a67712",
+            "colId": "bd50c8d4-daec-40a4-bc3c-9fcfeafc2903",
+            "containerId": "",
+            "name": "SUCESSO => Company/GetAll DO BANCO",
+            "url": "{{host}}Company/GetAll",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-04-13T13:51:32.812Z",
+            "modified": "2024-04-13T13:51:32.812Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "09d88366-4ff6-49df-a42c-d1224c3d373f",
+            "colId": "bd50c8d4-daec-40a4-bc3c-9fcfeafc2903",
+            "containerId": "",
+            "name": "ERRO_CNPJ_VALIDO => Company/getByCNPJ",
+            "url": "{{host}}Company/GetByCnpj?cnpj=12345678901234",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-04-13T13:51:45.488Z",
+            "modified": "2024-04-13T13:51:45.488Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "cnpj",
+                    "value": "12345678901234",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "cbb7521f-e6bc-4b29-bdd7-91df29a91dbf",
+            "colId": "bd50c8d4-daec-40a4-bc3c-9fcfeafc2903",
+            "containerId": "",
+            "name": "SUCESSO_VALIDO => Company/getByCNPJ",
+            "url": "{{host}}Company/GetByCnpj?cnpj=46.070.794/0001-60",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-04-13T13:51:54.575Z",
+            "modified": "2024-04-13T13:51:54.575Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "cnpj",
+                    "value": "46.070.794/0001-60",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "975117ca-8a8a-4da8-8675-226046e78cca",
+            "colId": "bd50c8d4-daec-40a4-bc3c-9fcfeafc2903",
+            "containerId": "",
+            "name": "ERRO_CNPJ_INVALIDO => Company/Create EXEMPLO",
+            "url": "{{host}}Company/Create",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2024-04-13T13:53:31.407Z",
+            "modified": "2024-04-13T13:53:31.407Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"Abertura\": \"2020-01-01\",\n  \"Situacao\": \"Inativa\",\n  \"Tipo\": \"MEI\",\n  \"Nome\": \"Empresa Exemplo\",\n  \"Fantasia\": \"Fantasia Exemplo\",\n  \"Porte\": \"Pequeno Porte\",\n  \"NaturezaJuridica\": \"Sociedade Empresária Limitada\",\n  \"AtividadePrincipal\": [\n    {\n      \"Codigo\": \"123456\",\n      \"Descricao\": \"Descrição da Atividade Principal\"\n    }\n  ],\n  \"AtividadesSecundarias\": [\n    {\n      \"Codigo\": \"654321\",\n      \"Descricao\": \"Descrição da Atividade Secundária\"\n    }\n  ],\n  \"Logradouro\": \"Rua Exemplo\",\n  \"Numero\": \"123\",\n  \"Complemento\": \"Complemento Exemplo\",\n  \"Municipio\": \"Cidade Exemplo\",\n  \"Bairro\": \"Bairro Exemplo\",\n  \"UF\": \"UF\",\n  \"CEP\": \"12345-678\",\n  \"Telefone\": \"(00) 1234-5678\",\n  \"DataSituacao\": \"2024-04-12T10:30:00Z\",\n  \"CNPJ\": \"1234567894561\",\n  \"UltimaAtualizacao\": \"2024-04-12T10:30:00Z\",\n  \"Status\": \"Regular\",\n  \"Email\": \"exemplo@empresa.com\",\n  \"EFR\": \"NÃO\",\n  \"MotivoSituacao\": \"Situação Regular\",\n  \"SituacaoEspecial\": \"Sem Situação Especial\",\n  \"DataSituacaoEspecial\": \"2024-04-12T10:30:00Z\",\n  \"CapitalSocial\": \"100000\",\n  \"QSA\": [\n    {\n      \"Nome\": \"Sócio Exemplo\",\n      \"Qual\": \"Sócio Majoritário\",\n      \"PaisOrigem\": \"Brasil\"\n    }\n  ],\n  \"Extra\": {\n    \"Chave1\": \"Valor1\",\n    \"Chave2\": \"Valor2\"\n  },\n  \"Billing\": {\n    \"Database\": false,\n    \"Free\": false\n  }\n}\n",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "cbc889c2-31e0-4387-b5df-89587b889fad",
+            "colId": "bd50c8d4-daec-40a4-bc3c-9fcfeafc2903",
+            "containerId": "",
+            "name": "SUCESSO => Company/Create EXTRA",
+            "url": "{{host}}Company/Create",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2024-04-13T13:57:33.686Z",
+            "modified": "2024-04-13T13:57:33.686Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"id\": null,\n  \"abertura\": \"19/04/2022\",\n  \"situacao\": \"ATIVA\",\n  \"tipo\": \"MATRIZ\",\n  \"nome\": \"EXTRA SUPERMERCADO LTDA\",\n  \"fantasia\": \"EXTRA SUPERMERCADO LTDA\",\n  \"porte\": \"MICRO EMPRESA\",\n  \"naturezaJuridica\": \"\",\n  \"atividadePrincipal\": null,\n  \"atividadesSecundarias\": null,\n  \"logradouro\": \"RUA JOSE ANTONIO LAPIDO\",\n  \"numero\": \"659\",\n  \"complemento\": \"SALA 01\",\n  \"municipio\": \"PONTAO\",\n  \"bairro\": \"CENTRO\",\n  \"uf\": \"RS\",\n  \"cep\": \"99.190-000\",\n  \"telefone\": \"(54) 8142-4837 / (0000) 0000-0000\",\n  \"dataSituacao\": \"\",\n  \"cnpj\": \"46.070.794/0001-60\",\n  \"ultimaAtualizacao\": \"0001-01-01T00:00:00\",\n  \"status\": \"OK\",\n  \"email\": \"mercado.extra22@outlook.com\",\n  \"efr\": \"\",\n  \"motivoSituacao\": \"\",\n  \"situacaoEspecial\": \"\",\n  \"dataSituacaoEspecial\": \"\",\n  \"capitalSocial\": \"\",\n  \"qsa\": [\n    {\n      \"nome\": \"ALEX BRITTO SERETA\"\n    }\n  ],\n  \"extra\": {},\n  \"billing\": {\n    \"free\": true,\n    \"database\": true\n  }\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ],
+    "settings": {
+        "options": {
+            "baseUrl": "https://localhost:7142/"
+        }
+    }
+}
