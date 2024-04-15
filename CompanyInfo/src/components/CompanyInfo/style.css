@@ -1,0 +1,62 @@
+.CompanyContainer {
+    padding: 0.5rem;
+    border: 1px solid rgb(246, 163, 248);
+    margin-bottom: 0.5rem;
+    border-radius: 10px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.CompanyTitle {
+    font-size: 1.2rem;
+    margin:4px;
+}
+
+.CompanyHr {
+    width: 100%;
+    background-image: linear-gradient(to right, rgba(246, 163, 248, 0), rgba(246, 163, 248, 1), rgba(246, 163, 248, 0));
+    height: 1px;
+    margin: 0.5rem 0;
+}
+
+.CompanyData {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.CompanyInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.CompanyInfoTitle {
+    color: black;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.CompanyInfoValue {
+    color: gray;
+    font-size: 1rem;
+}
+
+.ButtonSaveCompany{
+    background-color: rgb(219, 103, 221);
+    border: 1px solid rgb(103, 103, 221);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    margin: 0.5rem 0px;
+    color: white;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.ButtonSaveCompany:hover {
+    background-color: rgb(103, 103, 221);
+    border: 1px solid rgb(103, 103, 221);
+    transition: 1s;
+}

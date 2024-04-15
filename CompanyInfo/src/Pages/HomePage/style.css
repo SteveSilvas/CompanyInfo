@@ -97,29 +97,3 @@
     align-items: center;
     width: 100%;
 }
-.CompanyContainer{
-    display: flex;
-    padding: 0.5rem;
-    border: 1px solid rgb(246, 163, 248);
-    margin-bottom: 0.5rem;
-    border-radius: 10px;
-    width: 80%;
-    justify-content: space-around;
-}
-
-.CompanyInfo{
-    display:  flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.CompanyInfoTitle{
-    color: black;
-    font-weight: bold;
-    font-size: 1rem;
-}
-
-.CompanyInfoValue{
-    color: gray;
-    font-size: 1rem;
-}

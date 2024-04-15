@@ -40,6 +40,8 @@ namespace CompanyInfo.Services
 
         public async Task Create(CompanyInfoDTO companyInfoDTO)
         {
+            companyInfoDTO.CNPJ = Helpers.CleanCNPJ(companyInfoDTO.CNPJ);
+
             if (!CNPJValidator.IsValid(companyInfoDTO.CNPJ))
                 throw new Exception("CNPJ inválido.");
 

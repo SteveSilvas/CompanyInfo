@@ -31,7 +31,12 @@ const CompaniesSaved: React.FC = () => {
                 }}
                 key={index}
             >
-                {company.fantasia}
+                <h2>{company.fantasia}</h2>
+                <h2>{company.nome}</h2>
+                <p><strong>CNPJ:</strong> {company.cnpj}</p>
+                <p><strong>Telefone:</strong> {company.telefone}</p>
+                <p><strong>Endereço:</strong> {company.logradouro}, {company.numero}, {company.bairro}, {company.municipio} - {company.uf}</p>
+                <p><strong>Situação:</strong> {company.situacao}</p>
             </div>
         ));
     };
