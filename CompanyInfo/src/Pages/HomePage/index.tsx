@@ -1,21 +1,35 @@
 import React, { useState } from "react";
+import { AiFillCloseCircle } from "react-icons/ai";
 import { IoIosAddCircle } from "react-icons/io";
+import { IoRefreshCircle } from "react-icons/io5";
 import { CnpjType, CompanyInfo } from "../../@types/types";
 import api from "../../Services/Api";
+import './style.css';
 const Homepage: React.FC = () => {
     const [companiesSearcheds, setCompaniesSearcheds] = useState<CompanyInfo[]>([]);
     const [cnpjs, setCnpjs] = useState<CnpjType[]>([{ cnpj: "", key: 0 }]);
 
     const renderInputs = (): JSX.Element[] => {
         return cnpjs.map((cnpj, index) => (
-            <input
-                key={index}
-                type="text"
-                placeholder="Digite o CNPJ"
-                value={cnpj.cnpj}
-                onChange={(e) => handleCnpjChange(index, e.target.value)}
-            />
+            <div key={index} className="InputContainer">
+                <input
+                    className="InputCnpj"
+                    key={index}
+                    type="text"
+                    placeholder="Digite o CNPJ"
+                    value={cnpj.cnpj}
+                    onChange={(e) => handleCnpjChange(index, e.target.value)}
+                />
+                <AiFillCloseCircle className="InputCloseIcon" onClick={() => handleRemoveCnpj(index)} />
+            </div>
+
         ));
+    }
+
+    const handleRemoveCnpj = (index: number) => {
+        const cnpjsLocal = [...cnpjs];
+        cnpjsLocal.splice(index, 1);
+        setCnpjs(cnpjsLocal);
     }
 
     const handleCnpjChange = (index: number, value: string) => {
@@ -23,23 +37,33 @@ const Homepage: React.FC = () => {
         updatedCnpjs[index].cnpj = value;
         setCnpjs(updatedCnpjs);
     }
+
     const handleSearchCompanies = () => {
+        setCnpjs(cnpjs.filter(cnpj => cnpj.cnpj));
         cnpjs.map(cnpj => {
-            if (cnpj.cnpj) requestCompany(cnpj.cnpj)
+            requestCompany(cnpj.cnpj)
         });
     }
 
-    const requestCompany = (cnpj: string) => {
+    const requestCompany = async (cnpj: string) => {
         cnpj = cnpj.replace(/\D/g, "");
-        api.get(`Company/GetByCnpj/?cnpj=${cnpj}`)
-            .then((response) => {
-                const companies: CompanyInfo[] = companiesSearcheds;
-                companies.push(response.data);
-                setCompaniesSearcheds(companies);
-            })
-            .catch((error) => {
-                console.error(error);
-            });
+
+        try {
+            const response = await api.get(`Company/GetByCnpj/?cnpj=${cnpj}`);
+
+            const companyExists = companiesSearcheds.some(company => company.cnpj === cnpj);
+
+            if (!companyExists) {
+                setCompaniesSearcheds(prevCompanies => [...prevCompanies, response.data]);
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    const handleRefresh = () => {
+        setCompaniesSearcheds([]);
+        setCnpjs([{ cnpj: "", key: 0 }]);
     }
 
     const handleAddCnpj = () => {
@@ -51,60 +75,140 @@ const Homepage: React.FC = () => {
         console.warn(cnpjsLocal)
     }
     return (
-        <div className='Homepage' style={{ display: "flex", flexDirection: "row", width: "100%", justifyContent: "start", alignItems: "start"}}>
-            <section style={{  position: "relative",display: "flex", flexDirection: "column", width: "30%", padding: "1rem", borderRadius: "10px", border: "1px solid #c3c3c3"  }}>
-                Buscar Empresa por CNPJ
+        <div className='HomePage'>
+            <section className="SearchArea">
+                <div className="SearchAreaTitleRow">
+                    <IoRefreshCircle
+                        onClick={handleRefresh}
+                        className="SearchAreaAddIcon" />
+                    <strong className="SearchAreaTitle">Buscar Empresa por CNPJ</strong>
                     <IoIosAddCircle
                         onClick={handleAddCnpj}
-                        style={{ cursor: "pointer", color: "greenyellow", position: "absolute", right: "10px", top: "10px", height: "30px", width: "30px" }} />
-                    
-                <div style={{ display: "flex", flexDirection: "column", gap: "20px", marginTop: "20px", margin: '0px', borderRadius: "10px", border: "1px solid #c3c3c3" }}>
-                {renderInputs()}
-
+                        className="SearchAreaAddIcon"
+                    />
+                </div>
+                <div className="SearchAreaInputBox">
+                    {renderInputs()}
                 </div>
                 <button
-                    onClick={handleSearchCompanies}
-                    style={{ cursor: "pointer", backgroundColor: "green", color: "white" }}
-                >
+                    className="SearchAreaButton"
+                    onClick={handleSearchCompanies}>
                     Search
                 </button>
             </section>
-            <section>
+            <section className="CompaniesSearched">
                 {companiesSearcheds.map((company, index) => (
                     <div
-                        key={index}
-                        style={{ display: "flex", gap: "20px", padding: "10px", margin: '0px', borderRadius: "10px", border: "1px solid #c3c3c3" }}
-                    >
-                        <div style={{ display: "flex", flexDirection: "column", gap: "20px", backgroundColor: "#c3c3c3", padding: "10px", margin: '0px' }}>
-                            <div>Fantasia: {company.fantasia}</div>
-                            <div>Nome: {company.nome}</div>
-                            <div>CNPJ: {company.cnpj}</div>
-                            <div>Status: {company.status}</div>
-                            <div>Motivo Situação: {company.motivoSituacao}</div>
-                            <div>Situação Especial: {company.situacaoEspecial}</div>
-                            <div>Data Situação Especial: {company.dataSituacaoEspecial}</div>
-                            <div>Porte: {company.porte}</div>
-                            <div>Abertura: {company.abertura}</div>
-                            <div>Situação: {company.situacao}</div>
-                            <div>Data Situação: {company.dataSituacao}</div>
-                            <div>Tipo: {company.tipo}</div>
-                            <div>Natureza Jurídica: {company.naturezaJuridica}</div>
+                    key={index}
+                    className="CompanyContainer">
+                        <div className="CompanyInfo">
+                            <div>
+                                <span className="CompanyInfoTitle">Fantasia:</span>
+                                <span className="CompanyInfoValue">{company.fantasia}</span>
+                            </div>
+                            <div>
+                                <span className="CompanyInfoTitle">Nome: </span>
+                                <span className="CompanyInfoValue">{company.nome}</span>
+                            </div>
+                            <div>
+                                <span className="CompanyInfoTitle">CNPJ: </span>
+                                <span className="CompanyInfoValue">{company.cnpj}</span>
+                            </div>
+                            <div>
+                                <span className="CompanyInfoTitle">Status: </span>
+                                <span className="CompanyInfoValue">{company.status}</span>
+                            </div>
+                            <div>
+                                <span className="CompanyInfoTitle">Motivo Situação: </span>
+                                <span className="CompanyInfoValue">{company.motivoSituacao}</span>
+                            </div>
+                            <div>
+                                <span className="CompanyInfoTitle">Situação Especial: </span>
+                                <span className="CompanyInfoValue">{company.situacaoEspecial}</span>
+                            </div>
+                            <div>
+                                <span className="CompanyInfoTitle">Data Situação Especial: </span>
+                                <span className="CompanyInfoValue">{company.dataSituacaoEspecial}</span>
+                            </div>
+                            <div>
+                                <span className="CompanyInfoTitle">Porte: </span>
+                                <span className="CompanyInfoValue">{company.porte}</span>
+                            </div>
+                            <div>
+                                <span className="CompanyInfoTitle">Abertura: </span>
+                                <span className="CompanyInfoValue">{company.abertura}</span>
+                            </div>
+                            <div>
+                                <span className="CompanyInfoTitle">Situação: </span>
+                                <span className="CompanyInfoValue">{company.situacao}</span>
+                            </div>
+                            <div>
+                                <span className="CompanyInfoTitle">Data Situação: </span>
+                                <span className="CompanyInfoValue">{company.dataSituacao}</span>
+                            </div>
+                            <div>
+                                <span className="CompanyInfoTitle">Tipo: </span>
+                                <span className="CompanyInfoValue">{company.tipo}</span>
+                            </div>
+                            <div>
+                                <span className="CompanyInfoTitle">Natureza Jurídica: </span>
+                                <span className="CompanyInfoValue">{company.naturezaJuridica}</span>
+                            </div>
                         </div>
-
-                        <div style={{ display: "flex", flexDirection: "column", gap: "20px", backgroundColor: "#c3c3c3", padding: "10px", margin: '0px' }}>
-                            <div>Capital Social: {company.capitalSocial}</div>
-                            <div>Logradouro: {company.logradouro}</div>
-                            <div>Número: {company.numero}</div>
-                            <div>Complemento: {company.complemento}</div>
-                            <div>Município: {company.municipio}</div>
-                            <div>Bairro: {company.bairro}</div>
-                            <div>UF: {company.uf}</div>
-                            <div>CEP: {company.cep}</div>
-                            <div>Telefone: {company.telefone}</div>
-                            <div>Última Atualização: {company.ultimaAtualizacao}</div>
-                            <div>Email: {company.email}</div>
-                            <div>EFR: {company.efr}</div>
-                            <div>Billing: {JSON.stringify(company.billing)}</div>
+                    
+                        <div className="CompanyInfo">
+                            <div>
+                                <span className="CompanyInfoTitle">Capital Social: </span>
+                                <span className="CompanyInfoValue">{company.capitalSocial}</span>
+                            </div>
+                            <div>
+                                <span className="CompanyInfoTitle">Logradouro: </span>
+                                <span className="CompanyInfoValue">{company.logradouro}</span>
+                            </div>
+                            <div>
+                                <span className="CompanyInfoTitle">Número: </span>
+                                <span className="CompanyInfoValue">{company.numero}</span>
+                            </div>
+                            <div>
+                                <span className="CompanyInfoTitle">Complemento: </span>
+                                <span className="CompanyInfoValue">{company.complemento}</span>
+                            </div>
+                            <div>
+                                <span className="CompanyInfoTitle">Município: </span>
+                                <span className="CompanyInfoValue">{company.municipio}</span>
+                            </div>
+                            <div>
+                                <span className="CompanyInfoTitle">Bairro: </span>
+                                <span className="CompanyInfoValue">{company.bairro}</span>
+                            </div>
+                            <div>
+                                <span className="CompanyInfoTitle">UF: </span>
+                                <span className="CompanyInfoValue">{company.uf}</span>
+                            </div>
+                            <div>
+                                <span className="CompanyInfoTitle">CEP: </span>
+                                <span className="CompanyInfoValue">{company.cep}</span>
+                            </div>
+                            <div>
+                                <span className="CompanyInfoTitle">Telefone: </span>
+                                <span className="CompanyInfoValue">{company.telefone}</span>
+                            </div>
+                            <div>
+                                <span className="CompanyInfoTitle">Última Atualização: </span>
+                                <span className="CompanyInfoValue">{company.ultimaAtualizacao}</span>
+                            </div>
+                            <div>
+                                <span className="CompanyInfoTitle">Email: </span>
+                                <span className="CompanyInfoValue">{company.email}</span>
+                            </div>
+                            <div>
+                                <span className="CompanyInfoTitle">EFR: </span>
+                                <span className="CompanyInfoValue">{company.efr}</span>
+                            </div>
+                            <div>
+                                <span className="CompanyInfoTitle">Billing: </span>
+                                <span className="CompanyInfoValue">{JSON.stringify(company.billing)}</span>
+                            </div>
                         </div>
                     </div>
                 ))}

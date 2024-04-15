@@ -1,0 +1,19 @@
+.NavigationBar {
+    display: flex;
+    gap: 20pt;
+    background-color: rgb(103, 103, 221);
+    padding: 10px;
+    margin: 0px;
+}
+
+.Link{
+    color: white;
+    text-decoration: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    transition: 1s;
+}
+
+.Link:hover{
+    color:rgb(219, 103, 221);
+    transition: 1s;
+}

@@ -17,12 +17,12 @@ const CompaniesSaved: React.FC = () => {
             });
     }
     const renderCompaniesSaved = (): JSX.Element[] | []=> {
-        return companies.map((company: any, index: number) => (
+        return companies.map((company: CompanyInfo, index: number) => (
             <div 
                 style={{ display: "flex", gap: "20px", backgroundColor: "gray", padding: "10px", margin: '0px' }}
                 key={index}
             >
-                {company.text}
+                {company.fantasia}
             </div>
         ));
     }
