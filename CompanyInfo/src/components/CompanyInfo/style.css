@@ -11,7 +11,7 @@
 
 .CompanyTitle {
     font-size: 1.2rem;
-    margin:4px;
+    margin: 4px;
 }
 
 .CompanyHr {
@@ -44,7 +44,7 @@
     font-size: 1rem;
 }
 
-.ButtonSaveCompany{
+.ButtonSaveCompany {
     background-color: rgb(219, 103, 221);
     border: 1px solid rgb(103, 103, 221);
     padding: 0.5rem 1rem;
@@ -61,8 +61,27 @@
     transition: 1s;
 }
 
-.CompanyInfoValueBilling{
+.CompanyInfoValueBilling {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
+}
+
+@media (max-width: 768px) {
+    .CompanyInfo {
+        padding: 0px 1rem;
+    }
+
+    .CompanyData {
+        flex-direction: column;
+    }
+
+    .CompanyInfoRowData {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .InputCnpj {
+        width: 100%;
+    }
 }

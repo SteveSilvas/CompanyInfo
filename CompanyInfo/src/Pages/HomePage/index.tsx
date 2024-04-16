@@ -27,19 +27,19 @@ const Homepage: React.FC = () => {
         ));
     }
 
-    const handleRemoveCnpj = (index: number) => {
+    const handleRemoveCnpj = (index: number): void => {
         const cnpjsLocal = [...cnpjs];
         cnpjsLocal.splice(index, 1);
         setCnpjs(cnpjsLocal);
     }
 
-    const handleCnpjChange = (index: number, value: string) => {
+    const handleCnpjChange = (index: number, value: string): void => {
         const updatedCnpjs = [...cnpjs];
         updatedCnpjs[index].cnpj = value;
         setCnpjs(updatedCnpjs);
     }
 
-    const handleSearchCompanies = () => {
+    const handleSearchCompanies = (): void => {
         setCnpjs(cnpjs.filter(cnpj => cnpj.cnpj));
         cnpjs.map(cnpj => {
             requestCompany(cnpj.cnpj)
@@ -51,17 +51,18 @@ const Homepage: React.FC = () => {
 
         try {
             const response = await api.get(`Company/GetByCnpj/?cnpj=${cnpj}`);
-
-            const companyExists = companiesSearcheds.some(company => company.cnpj === cnpj);
-
+            const companyExists = companiesSearcheds.find(company => clearCnpj(company.cnpj) === clearCnpj(cnpj));
             if (!companyExists) {
                 setCompaniesSearcheds(prevCompanies => [...prevCompanies, response.data]);
             }
         } catch (error) {
-            console.error(error);
+            alert(error);
         }
     }
 
+    const clearCnpj = (cnpj: string): string => {
+        return cnpj.replace(/\D/g, "");
+    }
     const handleRefresh = () => {
         setCompaniesSearcheds([]);
         setCnpjs([{ cnpj: "", key: 0 }]);
@@ -106,13 +107,14 @@ const Homepage: React.FC = () => {
                 </div>
                 <button
                     className="SearchAreaButton"
-                    onClick={handleSearchCompanies}>
+                    onClick={handleSearchCompanies}
+                    disabled={cnpjs.length === 0}>
                     Search
                 </button>
             </section>
             <section className="CompaniesSearched">
                 {companiesSearcheds.map((company, index) => (
-                   <CompanyInfoDetail key={index} company={company} handleSaveCompany={handleSaveCompany}/>
+                    <CompanyInfoDetail key={index} company={company} handleSaveCompany={handleSaveCompany} />
                 ))}
             </section>
         </div>

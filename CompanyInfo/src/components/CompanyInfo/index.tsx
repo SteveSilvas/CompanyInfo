@@ -10,13 +10,14 @@ const CompanyInfoDetail: React.FC<ICompanyInfoDetail> = ({ company, handleSaveCo
         if (handleSaveCompany) {
             return (
                 <button
-                    className="CompanySaveButton"
+                    className="ButtonSaveCompany"
                     onClick={() => handleSaveCompany(company)}>
                     Salvar
                 </button>
             )
         }
     }
+
     return (
         <div
             className="CompanyContainer">
@@ -24,105 +25,105 @@ const CompanyInfoDetail: React.FC<ICompanyInfoDetail> = ({ company, handleSaveCo
             <div className="CompanyHr"></div>
             <div className="CompanyData">
                 <div className="CompanyInfo">
-                    <div>
+                    <div className="CompanyInfoRowData">
                         <span className="CompanyInfoTitle">Fantasia:</span>
                         <span className="CompanyInfoValue">{company.fantasia}</span>
                     </div>
-                    <div>
+                    <div className="CompanyInfoRowData">
                         <span className="CompanyInfoTitle">CNPJ: </span>
                         <span className="CompanyInfoValue">{company.cnpj}</span>
                     </div>
-                    <div>
+                    <div className="CompanyInfoRowData">
                         <span className="CompanyInfoTitle">Status: </span>
                         <span className="CompanyInfoValue">{company.status}</span>
                     </div>
-                    <div>
+                    <div className="CompanyInfoRowData">
                         <span className="CompanyInfoTitle">Motivo Situação: </span>
                         <span className="CompanyInfoValue">{company.motivoSituacao}</span>
                     </div>
-                    <div>
+                    <div className="CompanyInfoRowData">
                         <span className="CompanyInfoTitle">Situação Especial: </span>
                         <span className="CompanyInfoValue">{company.situacaoEspecial}</span>
                     </div>
-                    <div>
+                    <div className="CompanyInfoRowData">
                         <span className="CompanyInfoTitle">Data Situação Especial: </span>
                         <span className="CompanyInfoValue">{company.dataSituacaoEspecial}</span>
                     </div>
-                    <div>
+                    <div className="CompanyInfoRowData">
                         <span className="CompanyInfoTitle">Porte: </span>
                         <span className="CompanyInfoValue">{company.porte}</span>
                     </div>
-                    <div>
+                    <div className="CompanyInfoRowData">
                         <span className="CompanyInfoTitle">Abertura: </span>
                         <span className="CompanyInfoValue">{company.abertura}</span>
                     </div>
-                    <div>
+                    <div className="CompanyInfoRowData">
                         <span className="CompanyInfoTitle">Situação: </span>
                         <span className="CompanyInfoValue">{company.situacao}</span>
                     </div>
-                    <div>
+                    <div className="CompanyInfoRowData">
                         <span className="CompanyInfoTitle">Data Situação: </span>
                         <span className="CompanyInfoValue">{company.dataSituacao}</span>
                     </div>
-                    <div>
+                    <div className="CompanyInfoRowData">
                         <span className="CompanyInfoTitle">Tipo: </span>
                         <span className="CompanyInfoValue">{company.tipo}</span>
                     </div>
-                    <div>
+                    <div className="CompanyInfoRowData">
                         <span className="CompanyInfoTitle">Natureza Jurídica: </span>
                         <span className="CompanyInfoValue">{company.naturezaJuridica}</span>
                     </div>
-                    <div>
+                    <div className="CompanyInfoRowData">
                         <span className="CompanyInfoTitle">Capital Social: </span>
                         <span className="CompanyInfoValue">{company.capitalSocial}</span>
                     </div>
                 </div>
                 <div className="CompanyInfo">
-                    <div>
+                    <div className="CompanyInfoRowData">
                         <span className="CompanyInfoTitle">Logradouro: </span>
                         <span className="CompanyInfoValue">{company.logradouro}</span>
                     </div>
-                    <div>
+                    <div className="CompanyInfoRowData">
                         <span className="CompanyInfoTitle">Número: </span>
                         <span className="CompanyInfoValue">{company.numero}</span>
                     </div>
-                    <div>
+                    <div className="CompanyInfoRowData">
                         <span className="CompanyInfoTitle">Complemento: </span>
                         <span className="CompanyInfoValue">{company.complemento}</span>
                     </div>
-                    <div>
+                    <div className="CompanyInfoRowData">
                         <span className="CompanyInfoTitle">Município: </span>
                         <span className="CompanyInfoValue">{company.municipio}</span>
                     </div>
-                    <div>
+                    <div className="CompanyInfoRowData">
                         <span className="CompanyInfoTitle">Bairro: </span>
                         <span className="CompanyInfoValue">{company.bairro}</span>
                     </div>
-                    <div>
+                    <div className="CompanyInfoRowData">
                         <span className="CompanyInfoTitle">UF: </span>
                         <span className="CompanyInfoValue">{company.uf}</span>
                     </div>
-                    <div>
+                    <div className="CompanyInfoRowData">
                         <span className="CompanyInfoTitle">CEP: </span>
                         <span className="CompanyInfoValue">{company.cep}</span>
                     </div>
-                    <div>
+                    <div className="CompanyInfoRowData">
                         <span className="CompanyInfoTitle">Telefone: </span>
                         <span className="CompanyInfoValue">{company.telefone}</span>
                     </div>
-                    <div>
+                    <div className="CompanyInfoRowData">
                         <span className="CompanyInfoTitle">Última Atualização: </span>
                         <span className="CompanyInfoValue">{company.ultimaAtualizacao}</span>
                     </div>
-                    <div>
+                    <div className="CompanyInfoRowData">
                         <span className="CompanyInfoTitle">Email: </span>
                         <span className="CompanyInfoValue">{company.email}</span>
                     </div>
-                    <div>
+                    <div className="CompanyInfoRowData">
                         <span className="CompanyInfoTitle">EFR: </span>
                         <span className="CompanyInfoValue">{company.efr}</span>
                     </div>
-                    <div>
+                    <div className="CompanyInfoRowData">
                         <span className="CompanyInfoTitle">Billing: </span>
                         <div className="CompanyInfoValueBilling">
                             <span className="CompanyInfoTitle" style={{ fontWeight: "normal" }}>Free: </span>
