@@ -32,8 +32,8 @@ namespace CompanyInfo.DTOs
         public string SituacaoEspecial { get; set; } = string.Empty;
         public string DataSituacaoEspecial { get; set; } = string.Empty;
         public string CapitalSocial { get; set; } = string.Empty;
-        public List<QsaDTO> QSA { get; set; }
-        public Dictionary<string, string> Extra { get; set; }
-        public BillingDTO Billing { get; set; }
+        public List<QsaDTO>? QSA { get; set; }
+        public Dictionary<string, string>? Extra { get; set; }
+        public BillingDTO? Billing { get; set; }
     }   
 }

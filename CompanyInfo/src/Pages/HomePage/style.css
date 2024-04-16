@@ -1,0 +1,113 @@
+.HomePage {
+    display: flex;
+    width: 100vw;
+    justify-content: start;
+    align-items: start;
+    padding: 0.5rem;
+}
+
+.SearchArea {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    padding: 1rem;
+    border: 10px;
+    border: 1px solid rgb(219, 103, 221);
+    border-radius: 10px;
+}
+
+.SearchAreaTitleRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgb(103, 103, 221);
+}
+
+.SearchAreaTitle {
+    font-size: 1rem;
+}
+
+.SearchAreaAddIcon {
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+    transition: 1s;
+}
+
+.SearchAreaAddIcon:hover {
+    color: rgb(219, 103, 221);
+    transition: 1s;
+}
+
+.SearchAreaInputBox {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.InputContainer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.InputCloseIcon {
+    cursor: pointer;
+    transition: 1s;
+    font-size: 1rem;
+    color: rgb(219, 103, 221);
+}
+
+.InputCloseIcon:hover {
+    cursor: pointer;
+    transition: 1s;
+    color: rgb(103, 103, 221);
+}
+
+.InputCnpj {
+    border: 1px solid rgb(219, 103, 221);
+    border-radius: 4px;
+    flex-grow: 1;
+}
+
+.InputCnpj:focus, .InputCnpj:active {
+    border: 1px solid rgb(246, 163, 248);
+    border-radius: 4px;
+}
+
+.SearchAreaButton {
+    background-color: rgb(219, 103, 221);
+    border: 1px solid rgb(103, 103, 221);
+    border-radius: 4px;
+    margin: 0.5rem 0px;
+    color: white;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.SearchAreaButton:hover {
+    background-color: rgb(103, 103, 221);
+    border: 1px solid rgb(103, 103, 221);
+    transition: 1s;
+}
+
+.SearchAreaButton:disabled {
+    cursor: not-allowed;
+    background-color: rgba(219, 103, 221, 0.552);
+    border: 1px solid rgba(103, 103, 221, 0.552);
+    transition: 1s;
+}
+
+.SearchAreaButton:disabled:hover {
+    background-color: rgba(103, 103, 221, 0.552);
+    border: 1px solid rgb(103, 103, 221, 0.552);
+    transition: 1s;
+}
+
+.CompaniesSearched {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}

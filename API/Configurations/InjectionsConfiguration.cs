@@ -1,6 +1,7 @@
 ﻿using CompanyInfo.Contexts;
 using CompanyInfo.Functions;
 using CompanyInfo.Interfaces;
+using CompanyInfo.Mappings;
 using CompanyInfo.Repositories;
 using CompanyInfo.Services;
 using Microsoft.EntityFrameworkCore;
@@ -18,6 +19,7 @@ namespace CompanyInfo.Configurations
             ConfigureControllers(builder.Services);
             ConfigureFunctions(builder.Services);
             ConfigureSwagger(builder.Services);
+            ConfigureAutoMapper(builder.Services);
         }
 
         private static void ConfigureDatabase(WebApplicationBuilder builder)
@@ -72,6 +74,11 @@ namespace CompanyInfo.Configurations
                     },
                 });
             });
+        }
+
+        private static void ConfigureAutoMapper(IServiceCollection services)
+        {
+            services.AddAutoMapper(typeof(MappingProfile));
         }
     }
 }

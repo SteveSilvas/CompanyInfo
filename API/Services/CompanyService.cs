@@ -1,4 +1,5 @@
-﻿using CompanyInfo.DTOs;
+﻿using AutoMapper;
+using CompanyInfo.DTOs;
 using CompanyInfo.Enuns;
 using CompanyInfo.Functions;
 using CompanyInfo.Interfaces;
@@ -13,18 +14,21 @@ namespace CompanyInfo.Services
         private readonly IActivityRepository _activityRepository;
         private readonly IActivityXCompanyRepository _activityXCompanyRepository;
         private readonly IQsaRepository _qsaRepository;
+        private readonly IMapper _mapper;
         public CompanyService(
             ICompanyRepository companyRepository,
             IGetCompanyInfo getCompanyInfo,
             IActivityRepository activityRepository,
             IActivityXCompanyRepository activityXCompanyRepository,
-            IQsaRepository qsaRepository)
+            IQsaRepository qsaRepository, 
+            IMapper mapper)
         {
             _getCompanyInfo = getCompanyInfo;
             _companyRepository = companyRepository;
             _activityRepository = activityRepository;
             _activityXCompanyRepository = activityXCompanyRepository;
             _qsaRepository = qsaRepository;
+            _mapper = mapper;
         }
         public async Task<CompanyInfoDTO> GetCompanyInfoAsync(string cnpj)
         {
@@ -35,11 +39,18 @@ namespace CompanyInfo.Services
 
         public async Task<List<CompanyInfoDTO>> GetAllAsync()
         {
-            return await _companyRepository.GetAllAsync();
+            List<Empresa> companies = await _companyRepository.GetAllAsync();
+            if(companies != null)
+            {
+                return _mapper.Map<List<CompanyInfoDTO>>(companies);
+            }
+            return new List<CompanyInfoDTO>();
         }
 
         public async Task Create(CompanyInfoDTO companyInfoDTO)
         {
+            companyInfoDTO.CNPJ = Helpers.CleanCNPJ(companyInfoDTO.CNPJ);
+
             if (!CNPJValidator.IsValid(companyInfoDTO.CNPJ))
                 throw new Exception("CNPJ inválido.");
 

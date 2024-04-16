@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
-
-const NavigatorBar = () => {
+import './style.css';
+const NavigationBar = () => {
     return (
-        <nav style={{ display: "flex", gap: "20px", backgroundColor: "gray", padding: "10px", margin: '0px' }}>
+        <nav className="NavigationBar">
             <Link className="Link" to="/">Home</Link>
             <Link className="Link" to="/Companies">Empresas</Link>
         </nav>
     );
 }
 
-export default NavigatorBar;
+export default NavigationBar;
