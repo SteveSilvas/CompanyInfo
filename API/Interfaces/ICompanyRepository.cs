@@ -5,7 +5,7 @@ namespace CompanyInfo.Interfaces
 {
     public interface ICompanyRepository
     {
-        public Task<List<CompanyInfoDTO>> GetAllAsync();
+        public Task<List<Empresa>> GetAllAsync();
 
         public Task<int> Create(Empresa company);
 

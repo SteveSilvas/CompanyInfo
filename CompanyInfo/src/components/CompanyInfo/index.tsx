@@ -2,9 +2,21 @@ import { CompanyInfo } from "../../@types/types";
 import './style.css';
 interface ICompanyInfoDetail {
     company: CompanyInfo;
-    handleSaveCompany: (company: CompanyInfo) => void;
+    handleSaveCompany?: (company: CompanyInfo) => void;
 }
 const CompanyInfoDetail: React.FC<ICompanyInfoDetail> = ({ company, handleSaveCompany }) => {
+
+    const renderSaveButton = () => {
+        if (handleSaveCompany) {
+            return (
+                <button
+                    className="CompanySaveButton"
+                    onClick={() => handleSaveCompany(company)}>
+                    Salvar
+                </button>
+            )
+        }
+    }
     return (
         <div
             className="CompanyContainer">
@@ -112,17 +124,17 @@ const CompanyInfoDetail: React.FC<ICompanyInfoDetail> = ({ company, handleSaveCo
                     </div>
                     <div>
                         <span className="CompanyInfoTitle">Billing: </span>
-                        <span className="CompanyInfoValue">{JSON.stringify(company.billing)}</span>
+                        <div className="CompanyInfoValueBilling">
+                            <span className="CompanyInfoTitle" style={{ fontWeight: "normal" }}>Free: </span>
+                            <span className="CompanyInfoValue">{company.billing.free ? "Sim" : "Não"}</span>
+                            <span className="CompanyInfoTitle" style={{ fontWeight: "normal" }}>Database: </span>
+                            <span className="CompanyInfoValue">{company.billing.database ? "Sim" : "Não"}</span>
+                        </div>
+
                     </div>
                 </div>
             </div>
-            <div>
-                <button
-                    className="ButtonSaveCompany"
-                    onClick={() => handleSaveCompany(company)}>
-                    Salvar
-                </button>
-            </div>
+            {renderSaveButton()}
         </div>
     );
 }

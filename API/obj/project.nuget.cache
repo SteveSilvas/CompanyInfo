@@ -1,13 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "wG2KAouoFIr33CWYHI/fyMQTAfdFb1kJTrkp9o+erXt1XZiygX1OHNJYky6iEHNlWSEzBqwLNTpgJ0RtFsY21Q==",
+  "dgSpecHash": "EK3f/uO0CI8KI3cJdG6R0SEkxrwmDc/DvG+RJY3ODDX08cRo2WWUZALouZ7b6rm7/sldUNuwynicCqalQNSdFw==",
   "success": true,
   "projectFilePath": "C:\\Users\\stdsilva\\Documents\\_estudos\\cSharp\\CompanyInfo\\API\\CompanyInfo.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\stdsilva\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\stdsilva\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\stdsilva\\.nuget\\packages\\google.protobuf\\3.21.9\\google.protobuf.3.21.9.nupkg.sha512",
     "C:\\Users\\stdsilva\\.nuget\\packages\\k4os.compression.lz4\\1.2.6\\k4os.compression.lz4.1.2.6.nupkg.sha512",
     "C:\\Users\\stdsilva\\.nuget\\packages\\k4os.compression.lz4.streams\\1.2.6\\k4os.compression.lz4.streams.1.2.6.nupkg.sha512",
     "C:\\Users\\stdsilva\\.nuget\\packages\\k4os.hash.xxhash\\1.0.6\\k4os.hash.xxhash.1.0.6.nupkg.sha512",
+    "C:\\Users\\stdsilva\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\stdsilva\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.1\\microsoft.entityframeworkcore.7.0.1.nupkg.sha512",
     "C:\\Users\\stdsilva\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.1\\microsoft.entityframeworkcore.abstractions.7.0.1.nupkg.sha512",
     "C:\\Users\\stdsilva\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\7.0.1\\microsoft.entityframeworkcore.analyzers.7.0.1.nupkg.sha512",

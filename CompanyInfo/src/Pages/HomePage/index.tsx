@@ -74,11 +74,17 @@ const Homepage: React.FC = () => {
     }
     const handleSaveCompany = (company: CompanyInfo) => {
         api.post(`Company/Create`, company)
-            .then(() => {
-                alert("Empresa Salva com sucesso.");
+            .then((response) => {
+                console.log(response.data.message);
+                if (response && response.data && response.data.message) {
+                    alert(response.data.message);
+                } else {
+                    alert("Empresa Salva com sucesso.");
+                }
             })
             .catch((error) => {
-                alert("Erro ao salvar Empresa - " + error);
+                console.log(error);
+                alert("Erro ao salvar Empresa - " + error.response.data);
             });
     }
 
