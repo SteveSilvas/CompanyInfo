@@ -25,6 +25,7 @@ namespace CompanyInfo.Repositories
                 .Where(c => c.CNPJ == cnpj)
                 .FirstOrDefault();
         }
+
         public async Task<int> Create(Empresa company)
         {
             _companyContext.Empresas.Add(company);
